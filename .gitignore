@@ -1,8 +1,5 @@
 # macOS
 .DS_Store
 
-# TRAE local tooling
-.trae/
-
 # Node
 node_modules/
