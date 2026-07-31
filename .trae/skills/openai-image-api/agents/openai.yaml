@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenAI Image API"
+  short_description: "Generate or edit images with custom OpenAI endpoints."
+  default_prompt: "Use $openai-image-api to generate or edit an image through a custom OpenAI-compatible endpoint."
