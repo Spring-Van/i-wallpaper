@@ -6,12 +6,24 @@ import base64
 import json
 import mimetypes
 import os
-import tomllib
+import ssl
+try:
+    import tomllib
+except ModuleNotFoundError:
+    import tomli as tomllib
 import urllib.error
 import urllib.request
 import uuid
 from datetime import datetime
 from pathlib import Path
+
+try:
+    import certifi
+    _SSL_CONTEXT = ssl.create_default_context(cafile=certifi.where())
+except Exception:
+    _SSL_CONTEXT = ssl.create_default_context()
+    _SSL_CONTEXT.check_hostname = False
+    _SSL_CONTEXT.verify_mode = ssl.CERT_NONE
 
 
 DEFAULT_CONFIG_PATH = Path.home() / ".codex" / "config.toml"
@@ -217,7 +229,7 @@ def request_json(url: str, api_key: str, body: bytes, content_type: str, timeout
         method="POST",
     )
     try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
+        with urllib.request.urlopen(req, timeout=timeout, context=_SSL_CONTEXT) as resp:
             return json.loads(resp.read())
     except urllib.error.HTTPError as exc:
         detail = exc.read().decode("utf-8", errors="replace")
@@ -228,7 +240,7 @@ def request_json(url: str, api_key: str, body: bytes, content_type: str, timeout
 
 def fetch_url(url: str, timeout: int) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": "openai-image-api-skill/1.0"})
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
+    with urllib.request.urlopen(req, timeout=timeout, context=_SSL_CONTEXT) as resp:
         return resp.read()
 
 
