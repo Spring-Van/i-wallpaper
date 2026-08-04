@@ -1,0 +1,15 @@
+interface:
+  display_name: "\u5355\u5E45\u753B\u9762\u89C6\u89C9\u5BFC\u6F14"
+  short_description: "\u5206\u6790\u53C2\u8003\u56FE\u3001\u63CF\u8FF0\u6216\u5267\
+    \u60C5\uFF0C\u751F\u6210\u7535\u5F71\u611F\u4E0E\u6982\u5FF5\u6027\u5355\u5E45\
+    \u753B\u9762\u63D0\u793A\u8BCD"
+  default_prompt: "\u4F7F\u7528 $image-prompt-director \u5206\u6790\u8FD9\u5F20\u53C2\
+    \u8003\u56FE\uFF0C\u5E76\u751F\u6210\u53EF\u76F4\u63A5\u51FA\u56FE\u7684\u4E2D\
+    \u6587\u63D0\u793A\u8BCD\u3002"
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

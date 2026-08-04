@@ -1,0 +1,12 @@
+interface:
+  display_name: light fresh short film
+  short_description: 根据用户提供的人物、场景、剧情、参考画面或续写要求，直接生成5—30秒“光感小清新短片”视频提示词。固定输出整体场景与氛围、多分镜时间轴、画面风格、统一环境动态、统一环境音、负面提示词和语言锁，重点保证清透冷调、自然光感、人物细微状态与前后光线连续。
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
